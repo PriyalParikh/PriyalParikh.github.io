@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateWithPriyal</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <a href="home_page.html" class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-orange-500">InnovateWithPriyal</span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div id="menu" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0">
+                <a href="home_page.html" class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="projects_page.html" class="px-4 py-2 text-orange-500 font-medium" aria-current="page">Projects</a>
+                <a href="experience_education_page.html" class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Experience & Education</a>
+                <a href="contact_page.html" class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <section class="max-w-6xl mx-auto" x-data="projectsData()">
+            <!-- Page Title -->
+            <div class="text-center mb-12">
+                <h1 class="text-display-sm md:text-display-md mb-4">My Projects</h1>
+                <p class="text-gray-700 max-w-2xl mx-auto">Explore my portfolio of projects showcasing my skills and experience in software development.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button 
+                    @click="setFilter('all')" 
+                    class="px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200"
+                    :class="activeFilter === 'all' ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-orange-100'"
+                >
+                Selected Work
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="(project, index) in filteredProjects" :key="index">
+                    <div class="card overflow-hidden" x-data="{ expanded: false }" x-intersect="project.visible = true">
+                        <!-- Project Card (Collapsed State) -->
+                        <div x-show="!expanded" class="h-full flex flex-col">
+                            <!-- Project Image -->
+                            <div class="relative h-48 overflow-hidden">
+                                <div 
+                                    x-show="!project.visible" 
+                                    class="absolute inset-0 bg-gray-200 animate-pulse"
+                                ></div>
+                                <img 
+                                    x-show="project.visible" 
+                                    :src="project.imageUrl" 
+                                    :alt="project.title" 
+                                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                                    loading="lazy"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                                >
+                                <div class="absolute top-2 right-2">
+                                    <span 
+                                        class="inline-block px-2 py-1 text-xs font-medium bg-gray-900 bg-opacity-70 text-white rounded"
+                                        x-text="project.category"
+                                    ></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Project Content -->
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-lg font-semibold mb-2" x-text="project.title"></h3>
+                                <p class="text-gray-700 mb-4 flex-grow" x-text="project.description"></p>
+                                
+                                <!-- Technologies -->
+                                <div class="mb-4 flex flex-wrap gap-2">
+                                    <template x-for="(tech, techIndex) in project.technologies" :key="techIndex">
+                                        <span class="inline-block px-2 py-1 text-xs font-medium bg-orange-100 text-orange-700 rounded">
+                                            <span x-text="tech"></span>
+                                        </span>
+                                    </template>
+                                </div>
+                                
+                                <!-- View Details Button -->
+                                <button 
+                                    @click="expanded = true" 
+                                    class="btn-secondary inline-flex items-center justify-center w-full"
+                                >
+                                    <span>View Details</span>
+                                    <i class="fas fa-chevron-down ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card (Expanded State) -->
+                        <div x-show="expanded" class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-semibold" x-text="project.title"></h3>
+                                <button @click="expanded = false" class="text-gray-700 hover:text-orange-500 transition-colors">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Project Image -->
+                            <div class="mb-6 rounded-lg overflow-hidden">
+                                <img 
+                                    :src="project.imageUrl" 
+                                    :alt="project.title" 
+                                    class="w-full h-64 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;"
+                                >
+                            </div>
+                            
+                            <!-- Project Details -->
+                            <div class="mb-6">
+                                <h4 class="text-lg font-medium mb-2">Project Overview</h4>
+                                <p class="text-gray-700 mb-4" x-text="project.fullDescription"></p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <!-- Category -->
+                                    <div>
+                                        <h5 class="text-sm font-medium text-gray-700">Category</h5>
+                                        <p class="text-gray-900" x-text="project.category"></p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Technologies -->
+                                <h5 class="text-sm font-medium text-gray-700 mb-2">Technologies Used</h5>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <template x-for="(tech, techIndex) in project.technologies" :key="techIndex">
+                                        <span class="inline-block px-2 py-1 text-xs font-medium bg-orange-100 text-orange-700 rounded">
+                                            <span x-text="tech"></span>
+                                        </span>
+                                    </template>
+                                </div>
+                                
+                                <!-- Key Features -->
+                                <h5 class="text-sm font-medium text-gray-700 mb-2">Key Features</h5>
+                                <ul class="list-disc list-inside text-gray-700 mb-6">
+                                    <template x-for="(feature, featureIndex) in project.features" :key="featureIndex">
+                                        <li x-text="feature"></li>
+                                    </template>
+                                </ul>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                                <button 
+                                    @click="expanded = false" 
+                                    class="btn-text inline-flex items-center justify-center"
+                                >
+                                    <i class="fas fa-chevron-up mr-2"></i>
+                                    Close Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-700">&copy; 2025 Priyal Parikh. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/PriyalParikh" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/priyal-parikh-72aa07320/" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_priyalll_00?igsh=anJwZjlhc2c2eWJp" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Projects data and functionality
+        function projectsData() {
+            return {
+                activeFilter: 'all',
+                projects: [
+                    {
+  title: "Teaching Assistant – AI-Powered Course Selection Chatbot",
+  description: "Developed and enhanced an AI chatbot using GPT API to streamline course selection and reduce faculty advising.",
+  fullDescription: "Collaborated in building an AI-driven chatbot leveraging the GPT API to assist students with personalized course selection based on academic history and program requirements, resulting in a 70% reduction in faculty advising. Led GPT API integration and prompt engineering, and curated datasets to boost recommendation accuracy to 95%.",
+  imageUrl: "https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5",
+  technologies: ["Python", "FastAPI", "OpenAI GPT API", "Generative AI"],
+  category: "AI / Chatbot",
+  features: [
+    "Personalized course recommendations powered by AI and GPT API",
+    "Real-time integration with university databases for seamless data synchronization",
+    "Efficient backend built with FastAPI for scalability and speed",
+    "Adaptive system enhanced through continuous user feedback and prompt optimization",
+  ],
+  visible: true
+                    },
+                    {
+  title: "WisperDiary — AI-Powered Mood Journal",
+  description: "A React app that uses AI to analyze moods from journal entries and offers personalized mental health suggestions.",
+  fullDescription: "WisperDiary is a React-based mood journal that empowers users to monitor and enhance their mental well-being through daily reflections. Utilizing AI-driven sentiment analysis, the app interprets user emotions from journal entries and delivers tailored recommendations like uplifting activities and motivational quotes to support emotional balance.",
+  imageUrl: "https://images.unsplash.com/photo-1743385779359-b9eb8a6af97f",
+  technologies: ["React", "OpenAI API", "Chart.js"],
+  category: "Web / AI",
+  features: [
+    "AI-powered sentiment analysis to interpret user moods",
+    "Personalized activity and motivational quote suggestions",
+    "Interactive charts for visual mood tracking",
+    "User-friendly journaling interface for daily entries"
+  ],
+  visible: true
+                    },
+                       {
+  title: "Chess180 — Innovative Chess Variant with AI",
+  description: "A distinctive chess variant featuring unique rules and AI-powered strategic gameplay.",
+  fullDescription: "Chess180 introduces unconventional piece movements and alternative win conditions that challenge traditional chess strategies. Implemented a Minimax algorithm with Alpha-Beta pruning to optimize AI move selection. The AI system uses reinforcement learning to adapt to Chess180’s unique rules and evolving gameplay tactics.",
+  imageUrl: "https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hlc3N8ZW58MHx8MHx8fDA%3D",
+  technologies: ["Python", "Reinforcement Learning", "Minimax Algorithm", "Alpha-Beta Pruning"],
+  category: "AI / Game Development",
+  features: [
+    "Unique chess variant with novel rules and piece movements",
+    "Minimax algorithm enhanced with Alpha-Beta pruning for efficient AI decision-making",
+    "Reinforcement learning-based AI adapting to dynamic game strategies",
+    "Alternative win conditions encouraging innovative gameplay"
+  ],
+  visible: true
+                    },
+                    {
+  title: "GlowNest — Salon Booking App",
+  description: "A sleek and responsive salon booking platform built with React to streamline appointments and service management.",
+  fullDescription: "Built GlowNest, a modern React-based salon booking app created for my sister’s beauty business. The app lets clients easily browse services and schedule appointments. Designed with simplicity and elegance in mind to support small businesses with smooth digital booking.",
+  imageUrl: "https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=1436&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  technologies: ["React", "JavaScript", "CSS"],
+  category: "Web / Personal Project",
+  features: [
+    "User-friendly appointment scheduling interface",
+    "Simple backend panel to view appointments and update service availability",
+    "Responsive design for mobile and desktop use",
+    "Real-time booking confirmations and updates"
+  ],
+  visible: true
+                    },
+                    {
+  title: "E-Health Card — Healthcare Management System",
+  description: "Built a digital platform to streamline healthcare operations and improve patient data accessibility.",
+  fullDescription: "Developed an E-Health Card system to enhance patient identification and improve data accessibility and accuracy across healthcare providers. Streamlined patient care by integrating insurance processing, transactions, medical reports, appointments, doctor and hospital management, and medication tracking into a unified platform. Reduced patient wait time by 30% and cut data retrieval errors by 40%, resulting in more efficient and reliable healthcare service delivery.",
+  imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVhbHRoY2FyZXxlbnwwfHwwfHx8MA%3D%3D",
+  technologies: ["PHP", "JavaScript", "MySQL"],
+  category: "Web / Healthcare",
+  features: [
+    "Secure patient identification and record management",
+    "Unified platform for appointments, reports, insurance, and medications",
+    "Reduced data retrieval errors by 40% through digitized records",
+    "Improved service speed with a 30% reduction in patient wait times"
+  ],
+  visible: true
+                    }
+                ],
+                
+                get filteredProjects() {
+                    if (this.activeFilter === 'all') {
+                        return this.projects;
+                    }
+                    return this.projects.filter(project => 
+                        project.category.toLowerCase() === this.activeFilter.toLowerCase()
+                    );
+                },
+                
+                setFilter(filter) {
+                    this.activeFilter = filter;
+                }
+            };
+        }
+    </script>
+</body>
+</html>

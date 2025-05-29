@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovateWithPriyal</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+            <!-- Logo -->
+            <a href="home_page.html" class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-orange-500">InnovateWithPriyal</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="menu" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0">
+                <a href="home_page.html" class="px-4 py-2 text-orange-500 font-medium" aria-current="page">Home</a>
+                <a href="projects_page.html"
+                    class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Projects</a>
+                <a href="experience_education_page.html"
+                    class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Experience &
+                    Education</a>
+                <a href="contact_page.html"
+                    class="px-4 py-2 text-gray-700 hover:text-orange-500 transition-colors duration-200">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="py-16 md:py-24 px-4 bg-gradient-to-br from-orange-300 bg-opacity-10 to-white">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Text Content -->
+                    <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                        <h1 class="text-display-sm md:text-display-md mb-4">
+                            Hi, I'm <span class="text-orange-500">Priyal Parikh</span>
+                        </h1>
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-6">Software Developer</h2>
+                        <p class="text-gray-700 text-lg mb-8 max-w-lg mx-auto md:mx-0">&quot;Engineer by design,
+                            innovator by passion. I develop AI-driven, full-stack solutions that merge performance with
+                            simplicity&#x2014;because great systems should feel effortless.&quot;</p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="projects_page.html" class="btn-primary inline-flex items-center">
+                                <span>View My Projects</span>
+                                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                            <a href="contact_page.html" class="btn-secondary inline-flex items-center">
+                                <span>Contact Me</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Profile Image -->
+                    <div class="w-full md:w-1/2 flex justify-center items-center">
+                        <div class="relative">
+                            <!-- Background Decorative Elements -->
+                            <div class="absolute -top-6 -left-6 w-20 h-20 md:w-28 md:h-28 bg-gradient-to-tr from-orange-300 to-orange-400 opacity-25 rounded-full blur-3xl">
+                            </div>
+                            <div class="absolute -bottom-8 -right-8 w-28 h-28 md:w-36 md:h-36 bg-gradient-to-br from-orange-500 to-orange-600 opacity-15 rounded-full blur-3xl">
+                            </div>
+                            <!-- Profile Image Container -->
+                            <div
+                                class="relative w-64 h-52 md:w-80 md:h-64 rounded-3xl overflow-hidden border-4 border-gradient-to-r from-orange-400 via-yellow-300 to-pink-400 shadow-[0_10px_20px_rgba(252,157,54,0.25)] transition-transform hover:scale-105">
+                                <img src="../images/priyal.jpeg" alt="Priyal Parikh" class="w-full h-full object-cover"
+                                    loading="lazy" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section class="py-16 px-4 bg-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-display-sm mb-4">My Expertise</h2>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        I specialize in these core technologies and continuously expand my knowledge to stay current
+                        with industry trends.
+                    </p>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <!-- Skill Card 1 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <h3 class="font-semibold mb-2 text-orange-500">Full Stack Development</h3>
+                        <p class="text-sm text-gray-700">Building responsive, user-friendly web applications with React,
+                            Tailwind CSS, and HTML, alongside robust, scalable backend services using Python (FastAPI,
+                            Flask) and Java.</p>
+                    </div>
+
+                    <!-- Skill Card 2 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <h3 class="font-semibold mb-2 text-orange-500">Machine Learning &amp; AI</h3>
+                        <p class="text-sm text-gray-700">Training smarter models and building real-world solutions using
+                            TensorFlow, PyTorch, and cutting-edge AI and machine learning algorithms.</p>
+                    </div>
+
+                    <!-- Skill Card 3 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <h3 class="font-semibold mb-2 text-orange-500">Database Technologies</h3>
+                        <p class="text-sm text-gray-700">Building scalable database solutions with MySQL and MongoDB,
+                            focusing on data modeling, query optimization, and seamless integration into full-stack
+                            applications.</p>
+                    </div>
+
+                    <!-- Skill Card 4 -->
+                    <div class="card p-6 flex flex-col items-center text-center">
+                        <h3 class="font-semibold mb-2 text-orange-500">Problem Solving</h3>
+                        <p class="text-sm text-gray-700">Strong foundation in data structures and algorithms, solving
+                            complex challenges efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="py-16 px-4 bg-gray-50">
+            <div class="container mx-auto">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-display-sm mb-4">About Me</h2>
+                        <p class="text-gray-700 max-w-2xl mx-auto">
+                            A brief introduction to who I am and what drives my passion for software development.
+                        </p>
+                    </div>
+
+                    <div class="card p-8">
+                        <p class="text-gray-700 mb-6">I&apos;m a software developer who loves building things that
+                            actually make
+                            life easier &#x2014; from slick frontends to solid backends and everything in between. My
+                            coding
+                            journey started in university and quickly turned into a full-blown passion for solving
+                            real-world
+                            problems with digital tools (and a lot of coffee).</p>
+                        <p class="text-gray-700 mb-6">At first, some things seemed impossible, but the moment I started
+                            to
+                            really get it, that&#x2019;s when the fun truly began &#x2014; and that drive kept me
+                            learning and
+                            pushing forward. I&#x2019;m all about writing code that&#x2019;s clean enough to brag about
+                            and
+                            smart enough to actually work smoothly. I love diving into new tech just to see what cool
+                            stuff I
+                            can build next, and turning tricky problems into simple, user-friendly solutions &#x2014;
+                            because
+                            who wants complicated, right?</p>
+                        <p class="text-gray-700 mb-6">When I&#x2019;m not coding, you&#x2019;ll probably catch me
+                            geeking out
+                            over the latest tech trends, contributing to open-source projects, or balancing time between
+                            hiking,
+                            hitting the gym, and playing video games &#x2014; because a healthy work-life balance means
+                            mixing
+                            fresh air, sweat, and a little friendly competition!</p>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-orange-500">2+</p>
+                                <p class="text-gray-700">Years Experience</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-orange-500">10+</p>
+                                <p class="text-gray-700">Projects</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-orange-500">25+</p>
+                                <p class="text-gray-700">Technologies</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-orange-500">10+</p>
+                                <p class="text-gray-700">Happy Clients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="py-16 px-4 bg-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-display-sm mb-4">Featured Projects</h2>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        A selection of my recent work. Check out my projects page for the complete portfolio.
+                    </p>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Project Card 1 -->
+                    <div class="card overflow-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1684369175833-4b445ad6bfb5?q=80&w=1396&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="MechHugo" class="w-full h-full object-cover" loading="lazy"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=2940&q=80'; this.onerror=null;" />
+                        </div> <!-- closing this div -->
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">MechHugo</h3>
+                            <p class="text-gray-700 mb-4">
+                                Designed and developed a course recommendation chatbot using the OpenAI API. Integrated
+                                FastAPI for the
+                                backend and designed decision-making algorithms to provide personalized course
+                                recommendations based on
+                                completed prerequisites and student interests.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded">Python</span>
+                                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded">FastAPI</span>
+                                <span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded">Generative AI /
+                                    OpenAI
+                                    API</span>
+                            </div>
+                            <a href="projects_page.html" class="btn-text inline-flex items-center">
+                                <span>View Details</span>
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+<div class="card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 bg-white">
+    <div class="h-48 md:h-56 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1743385779359-b9eb8a6af97f?w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="WisperDiary preview" class="w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+    </div>
+
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 text-gray-900">WisperDiary — AI-Powered Mood Journal</h3>
+        <p class="text-gray-700 mb-4">
+            WisperDiary is a React app designed to help users track and improve their mental health through daily journal entries.
+            The app uses AI-driven sentiment analysis to understand the mood expressed in each entry and provides personalized suggestions such as activities or motivational quotes to uplift the user.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-orange-100 text-orange-700 text-xs font-medium px-2 py-1 rounded">React</span>
+            <span class="bg-orange-100 text-orange-700 text-xs font-medium px-2 py-1 rounded">OpenAI API</span>
+            <span class="bg-orange-100 text-orange-700 text-xs font-medium px-2 py-1 rounded">Chart.js</span>
+        </div>
+
+        <a href="projects_page.html" class="btn-text inline-flex items-center">
+                                <span>View Details</span>
+                                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+    </div>
+</div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <a href="projects_page.html" class="btn-secondary inline-flex items-center">
+                        <span>View All Projects</span>
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 px-4 bg-gradient-to-r from-orange-300 to-orange-500 text-white">
+            <div class="container mx-auto">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-display-sm mb-6">Ready to Work Together?</h2>
+                    <p class="text-lg mb-8 opacity-90">I&apos;m currently available for work and open to new
+                        opportunities.
+                        Let&apos;s create something amazing together!</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="contact_page.html"
+                            class="bg-white text-orange-500 hover:bg-gray-100 font-medium py-3 px-6 rounded-md transition-all duration-200 ease-in-out">
+                            Get in Touch
+                        </a>
+                        <a href="projects_page.html"
+                            class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-orange-500 font-medium py-3 px-6 rounded-md transition-all duration-200 ease-in-out">
+                            Explore My Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-700">&#xa9; 2025 Priyal Parikh. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/PriyalParikh" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/priyal-parikh-72aa07320/" target="_blank"
+                        rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_priyalll_00?igsh=anJwZjlhc2c2eWJp" target="_blank"
+                        rel="noopener noreferrer" class="text-gray-700 hover:text-orange-500 transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
